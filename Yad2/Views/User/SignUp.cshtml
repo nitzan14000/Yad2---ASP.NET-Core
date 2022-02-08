@@ -1,0 +1,109 @@
+﻿@section Header{
+    <img src="~/images/Logo.png" width="100" height="100" /> }
+@model UserModel
+<div class="container">
+    <div class="row gutters">
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <form method="post" asp-validation-for="all" asp-controller="User" asp-action="SignUp">
+
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">Personal Details</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label asp-for="FirstName">First Name</label>
+                                    <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter first name" required>
+                                    <span asp-validation-for="FirstName"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label asp-for="Email">Email</label>
+                                    <input type="email" asp-for="Email" class="form-control" placeholder="Enter email ID" required>
+                                    <span asp-validation-for="Email"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label asp-for="LastName">Last Name</label>
+                                    <input type="text" asp-for="LastName" class="form-control" placeholder="Enter phone number" required>
+                                    <span asp-validation-for="LastName"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label asp-for="BirthDate">Date of birth</label>
+                                    @if (!Context.Request.Cookies.ContainsKey("userName"))
+                                    {
+                                        <input type="date" asp-for="BirthDate" class="form-control" value="">
+                                    }
+                                    else
+                                    {
+                                        <input type="date" asp-for="BirthDate" class="form-control">
+                                    }
+                                    <span asp-validation-for="BirthDate"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label asp-for="Password">Password</label>
+                                    <input asp-for="Password" class="form-control" id="password" placeholder="Enter Password">
+                                    <span asp-validation-for="Password"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @if (!Context.Request.Cookies.ContainsKey("userName"))
+                                    {
+                                        <label id="Status" asp-for="UserName">UserName</label>
+                                        <input type="text" asp-for="UserName" onchange="UserChack()" class="form-control" id="userName" placeholder="Enter UserName" required>
+                                        <span asp-validation-for="UserName"></span>
+                                    }
+                                    else
+                                    {
+                                        <label asp-for="UserName">UserName</label>
+                                        <input type="text" asp-for="UserName" class="form-control" id="userName" placeholder="Enter UserName" required readonly="readonly" required>
+                                        <span asp-validation-for="UserName"></span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label asp-for="ConfirmPassword">Confirm Password</label>
+                                    <input type="password" asp-for="ConfirmPassword" class="form-control" id="confirmPassword" placeholder="Enter Password" required>
+                                    <span asp-validation-for="ConfirmPassword"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    @if (!Context.Request.Cookies.ContainsKey("userName"))
+                                    {
+                                        <button type="submit" class="btn btn-primary">register</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-primary">Update</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/myJavaScript.js"></script>
+}
+

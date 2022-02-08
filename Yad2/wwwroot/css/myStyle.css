@@ -1,0 +1,11 @@
+﻿button1 {
+    border: none;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #0366d6;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 8px 16px;
+}

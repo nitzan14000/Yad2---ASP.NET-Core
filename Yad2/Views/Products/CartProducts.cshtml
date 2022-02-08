@@ -1,0 +1,49 @@
+﻿@model List<ProductModel>
+@section Header{
+    <img src="~/images/Logo.png" width="100" height="100" /> }
+@{
+    decimal pay = 0;
+    decimal discount = new decimal(0.9);
+    bool listFull = false;
+}
+
+<div class="container row">
+    <div class="col-6">
+        @if (Model.Count != 0)
+            listFull = true;
+        else
+            listFull = false;
+
+        @foreach (var item in Model)
+        {
+            <div class="form-check">
+                @item.Title @item.Price
+                <a asp-controller="Products" asp-action="RemoveFromCart" asp-route-id="@item.Id">Remove</a>
+            </div>
+            pay += @item.Price;
+        }
+
+
+    </div>
+    <div class="col-6">
+        <div>Total price : @pay</div>
+        @if (Context.Request.Cookies.ContainsKey("userName"))
+        {
+            pay = pay * discount;
+            <div>Register price : @pay </div>
+        }
+        <a asp-controller="Products" asp-action="Buy" />
+        @if (listFull)
+        {
+            <input type="button" onclick="Message()" value="Buy" />
+        }
+        else
+        {
+
+        }
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/buyMessage.js" type="text/javascript">
+    </script>
+}

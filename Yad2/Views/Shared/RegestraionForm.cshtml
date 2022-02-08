@@ -1,0 +1,35 @@
+﻿@model UserModel
+<div class="text-danger">
+    @TempData["ErrorLogIn"]
+</div>
+@if (!Context.Request.Cookies.ContainsKey("userName"))
+{
+    <div class="modal-body">
+        <div class="form col-md-12 center-block">
+            <div>
+                <h3>sign</h3>
+            </div>
+            <form method="post" asp-controller="User" asp-action="LogIn">
+                <input type="text" asp-for="UserName" class="form-control input-lg h2" placeholder="UserName">
+                <span asp-validation-for="UserName" class="d-block"></span>
+                <input type="password" asp-for="Password" class="form-control input-lg h2" placeholder="Password">
+                <span asp-validation-for="Password" class="d-block"></span>
+                <button class="btn btn-primary btn-lg btn-sm w-25">Sign In</button>
+                <a asp-controller="User" asp-action="SignUp" class="btn btn-primary btn-lg btn-sm w-25">Sign Up</a>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <span class=" btn-sm w-25"></span>
+    <h3>Welcome @Context.Request.Cookies["userFName"] @Context.Request.Cookies["userLName"] </h3>
+    <div class="">
+        <a asp-controller="User" asp-action="LogOut" class="btn btn-primary btn-info btn-sm w-25">Log out</a>
+    </div>
+}
+
+
+
+
+

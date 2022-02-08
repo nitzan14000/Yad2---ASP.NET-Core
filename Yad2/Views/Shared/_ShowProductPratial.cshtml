@@ -1,0 +1,59 @@
+﻿@model ProductModel
+<div></div>
+<br />
+<br />
+<div class="product-content product-wrap clearfix">
+    <div class="row">
+        <div class="col-md-5 col-sm-12 col-xs-12">
+            <div class="product-image">
+                @if (Model.Image1 != null)
+                {
+                    <img src="data:Image/*;base64,@Convert.ToBase64String(@Model.Image1)" alt="194x228" class="card-img-top ">
+                }
+                else
+                {
+                    <span>no pictures</span>
+                }
+                <span class="tag2 hot">
+
+                </span>
+            </div>
+        </div>
+        <div class="col-md-7 col-sm-12 col-xs-12">
+            <div class="product-deatil">
+                <h5 class="name">
+                    <a href="#">
+                        <span>@Model.Title</span>
+                    </a>
+                </h5>
+                <p class="price-container">
+                    <span>@Model.Price</span>
+                </p>
+                <span class="tag1"></span>
+            </div>
+            <div class="description">
+                <p>@Model.ShortDescription</p>
+            </div>
+            <div class="product-info smart-form">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <a asp-controller="Products" asp-action="AddToCart" asp-route-id="@Model.Id" class="btn btn-success">Add to cart</a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@Model.Id" class="btn btn-success">Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@* <img class="image-popup" src="data:Image/*;base64,@Convert.ToBase64String(@Model.Image1)"> *@
+@*  <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@Model.Id" class="btn-primary col btn-lg btn-sm w-25 d-block ">Info </a>
+
+    <a asp-controller="Products" asp-action="AddToCart" asp-route-id="@Model.Id" class="btn-primary col btn-lg btn-sm w-25 d-block ">Add</a> *@

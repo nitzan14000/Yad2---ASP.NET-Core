@@ -1,0 +1,27 @@
+﻿
+
+<ul class="nav flex-column badge badge-light">
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="0" aria-disabled="true">Map Web</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" asp-controller="Products" asp-action="ShowProducts">Main Page</a>
+    </li>
+    <li class="nav-item">
+        <a asp-controller="User" asp-action="SignUp" class="nav-link active" aria-current="page">Personal registration</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="User" asp-action="AboutAs">About as</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Products" asp-action="CartProducts">Cart</a>
+    </li>
+    @if (Context.Request.Cookies.ContainsKey("userName"))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Products" asp-action="AddProductToWeb">Add Product To Sell</a>
+        </li>
+    }
+</ul>
+
+

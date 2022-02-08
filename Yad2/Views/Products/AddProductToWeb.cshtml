@@ -1,0 +1,61 @@
+﻿@model ProductModel
+
+@section Header{
+    <img src="~/images/Logo.png" width="100" height="100" /> }
+
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" method="post" asp-action="AddProductToWeb">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="LongDescription" class="form-label"></label>
+                <input asp-for="LongDescription" class="form-control" rows="3" />
+                <span asp-validation-for="LongDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image1" class="control-label"></label>
+                <input type="file" asp-for="Image1" name="image" id="image1" accept="image/*" />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Image2" class="control-label"></label>
+                <input type="file" asp-for="Image2" name="image" id="image2" class="" accept="image/*" />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Image3" class="control-label"></label>
+                <input type="file" asp-for="Image3" name="image" id="image3" class="" accept="image/*" />
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="products" asp-action="ShowProducts">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@*<span asp-validation-for="Image3" class="text-danger"></span>*@
